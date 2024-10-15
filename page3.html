@@ -26,14 +26,22 @@
         }
 
         .food-group {
-            display: flex;
-            justify-content: space-evenly;
-            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            justify-items: center;
         }
 
         .food-item {
             text-align: center;
             cursor: pointer;
+        }
+
+        .selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            justify-items: center;
         }
 
         .food-item img {

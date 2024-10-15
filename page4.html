@@ -26,9 +26,10 @@
         }
 
         .movie-group {
-            display: flex;
-            justify-content: space-evenly;
-            margin-bottom: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            justify-items: center;
         }
 
         .movie-item {
@@ -51,6 +52,13 @@
             color: #ff6f91;
         }
 
+        .selection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+            justify-items: center;
+        }
+        
         .selected img {
             transform: scale(1); /* Keep the image the same size */
             box-shadow: 0 0 15px 5px #ff4081; /* Glowing effect */
@@ -97,23 +105,23 @@
         <div class="movie-group">
             <div class="movie-item" onclick="toggleSelection(this)">
                 <img src="images/movie1.jpg" alt="Nơi Tình Yêu Kết Thúc">
-                <p>Beetlejuice Beetlejuice</p>
+                <p>Nơi Tình Yêu Kết Thúc</p>
             </div>
             <div class="movie-item" onclick="toggleSelection(this)">
                 <img src="images/movie2.jpg" alt="Robot Hoang Dã">
-                <p>Dul Muluk Dul Malik</p>
+                <p>Robot Hoang Dã</p>
             </div>
             <div class="movie-item" onclick="toggleSelection(this)">
                 <img src="images/movie3.jpg" alt="Joker">
-                <p>Hellboy: The Crooked Man</p>
+                <p>Joker</p>
             </div>
             <div class="movie-item" onclick="toggleSelection(this)">
                 <img src="images/movie4.jpg" alt="Tín Hiệu Cầu Cứu">
-                <p>Never Let Go</p>
+                <p>Tín Hiệu Cầu Cứu</p>
             </div>
             <div class="movie-item" onclick="toggleSelection(this)">
                 <img src="images/movie5.jpg" alt="Venom">
-                <p>Transformers One</p>
+                <p>Venom</p>
             </div>
         </div>
         <button onclick="goToNextPage()">Continue (´･ᴗ･`)</button>
