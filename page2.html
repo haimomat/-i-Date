@@ -1,0 +1,106 @@
+<!-- date-selection.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Selection</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6f91;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            background-color: #ff0066;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #ff4081;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        input[type="date"], input[type="time"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-right: 10px;
+            font-size: 1em;
+        }
+
+        .heart {
+            color: red;
+            font-size: 2em;
+            margin-top: 20px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>When are you free?</h1>
+        <div class="input-group">
+            <input type="date" id="date" name="date">
+            <input type="time" id="time" name="time">
+        </div>
+        <button onclick="submitDate()">（づ￣ ³￣）づ CLICK ME</button>
+    </div>
+
+    <script>
+        function submitDate() {
+            const date = document.getElementById("date").value;
+            const time = document.getElementById("time").value;
+            
+            if (date && time) {
+                // Redirect to the food selection page after selecting the date and time
+                window.location.href = "page3.html"; // Update with your next page file name
+            } else {
+                alert("Please select both a date and time.");
+            }
+        }
+    </script>
+
+</body>
+</html>

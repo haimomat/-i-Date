@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Selection</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6f91;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .movie-group {
+            display: flex;
+            justify-content: space-evenly;
+            margin-bottom: 20px;
+        }
+
+        .movie-item {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .movie-item img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            margin: 0 20px; /* Increase gap between the images */
+            box-shadow: none; /* Default no shadow */
+        }
+
+        .movie-item p {
+            margin-top: 10px;
+            font-size: 1.1em;
+            color: #ff6f91;
+        }
+
+        .selected img {
+            transform: scale(1); /* Keep the image the same size */
+            box-shadow: 0 0 15px 5px #ff4081; /* Glowing effect */
+        }
+
+        button {
+            background-color: #ff0066;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #ff4081;
+        }
+
+        .heart {
+            color: red;
+            font-size: 2em;
+            margin-top: 20px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>What movie do you want to watch?</h1>
+        <div class="movie-group">
+            <div class="movie-item" onclick="toggleSelection(this)">
+                <img src="images/movie1.jpg" alt="Nơi Tình Yêu Kết Thúc">
+                <p>Beetlejuice Beetlejuice</p>
+            </div>
+            <div class="movie-item" onclick="toggleSelection(this)">
+                <img src="images/movie2.jpg" alt="Robot Hoang Dã">
+                <p>Dul Muluk Dul Malik</p>
+            </div>
+            <div class="movie-item" onclick="toggleSelection(this)">
+                <img src="images/movie3.jpg" alt="Joker">
+                <p>Hellboy: The Crooked Man</p>
+            </div>
+            <div class="movie-item" onclick="toggleSelection(this)">
+                <img src="images/movie4.jpg" alt="Tín Hiệu Cầu Cứu">
+                <p>Never Let Go</p>
+            </div>
+            <div class="movie-item" onclick="toggleSelection(this)">
+                <img src="images/movie5.jpg" alt="Venom">
+                <p>Transformers One</p>
+            </div>
+        </div>
+        <button onclick="goToNextPage()">Continue (´･ᴗ･`)</button>
+    </div>
+
+    <script>
+        // Function to toggle the selected state
+        function toggleSelection(element) {
+            element.classList.toggle('selected'); // Toggle the 'selected' class to add/remove the glowing effect
+        }
+
+        function goToNextPage() {
+            const selectedItems = document.querySelectorAll('.selected p'); // Get selected movie items
+            if (selectedItems.length > 0) {
+                let movieSelection = [];
+                selectedItems.forEach(item => {
+                    movieSelection.push(item.innerText); // Store the selected movie names
+                });
+                localStorage.setItem('selectedMovie', JSON.stringify(movieSelection)); // Store in local storage
+                window.location.href = "page5.html"; // Go to the excitement rating page
+            } else {
+                alert("Please select at least one movie.");
+            }
+        }
+    </script>
+
+</body>
+</html>

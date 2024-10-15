@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Invitation</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6f91;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .btn-group {
+            display: flex;
+            justify-content: center;
+        }
+
+        button {
+            background-color: #ff0066;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            margin: 10px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #ff4081;
+        }
+
+        .heart {
+            color: red;
+            font-size: 2em;
+            margin-top: 20px;
+            animation: float 2s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="heart">❤️</div>
+        <h1>Would you like to go out with me for a date?</h1>
+        <div class="btn-group">
+            <button onclick="goToNextPage()">Yes</button>
+            <button>No</button>
+        </div>
+    </div>
+
+    <script>
+        function goToNextPage() {
+            window.location.href = "page2.html"; // Redirect to next page
+        }
+    </script>
+
+</body>
+</html>

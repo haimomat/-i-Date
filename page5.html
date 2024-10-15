@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rate Your Excitement</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6f91;
+            font-size: 2em;
+            margin-bottom: 30px;
+        }
+
+        .heart {
+            position: absolute;
+            bottom: 0;
+            font-size: 20px;
+            color: #ff6f91;
+            animation: floatUp 5s linear infinite;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh);
+                opacity: 0;
+            }
+        }
+
+        .rating-bar {
+            width: 80%;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 20px;
+            background: linear-gradient(to right, #ff0066 50%, #ddd 50%);
+            outline: none;
+            border-radius: 10px;
+            cursor: pointer;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease-in-out;
+        }
+
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff4081;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 64, 129, 0.5);
+        }
+
+        .slider::-moz-range-thumb {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #ff4081;
+            cursor: pointer;
+        }
+
+        .cat-image {
+            margin: 20px;
+        }
+
+        button {
+            background-color: #ff0066;
+            color: white;
+            border: none;
+            padding: 10px 30px;
+            font-size: 1.2em;
+            border-radius: 25px;
+            margin-top: 20px;
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            background-color: #ff4081;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img class="cat-image" src="images/anhq1.jpg" alt="Hấp" width="150">
+        <h1>Rate how excited you are</h1>
+
+        <div class="rating-bar">
+            <input type="range" min="0" max="100" value="50" class="slider" id="excitementSlider" oninput="generateHearts()">
+        </div>
+
+        <button onclick="nextPage()">Continue (´･ᴗ･`)</button>
+    </div>
+
+    <script>
+        // Function to generate heart animation when moving the slider
+        function generateHearts() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.textContent = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw'; // Random horizontal position
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px'; // Random heart size
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random float duration
+
+            document.body.appendChild(heart);
+
+            // Remove the heart element after the animation is finished
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Match the floatUp duration
+
+            // Update the slider color based on the value
+            updateSliderColor();
+        }
+
+        // Function to update the slider color based on the value
+        function updateSliderColor() {
+            const slider = document.getElementById('excitementSlider');
+            const value = slider.value;
+            const max = slider.max;
+            const percentage = (value / max) * 100;
+
+            // Change slider background color as it is raised
+            slider.style.background = `linear-gradient(to right, #ff0066 ${percentage}%, #ddd ${percentage}%)`;
+        }
+
+        // Function to go to the next page
+        function nextPage() {
+            const sliderValue = document.getElementById('excitementSlider').value; // Get slider value
+            localStorage.setItem('excitementLevel', sliderValue); // Store in local storage
+            window.location.href = "page6.html"; // Go to the final page
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>See You Soon</title>
+    <style>
+        body {
+            background-color: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff6f91;
+            font-size: 2.5em;
+        }
+
+        p {
+            color: #ff6f91;
+            font-size: 1.2em;
+        }
+
+        .cat-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img class="cat-image" src="images\happy_cat.jpg" alt="Happy Cat"> <!-- Replace with your gif -->
+        <h1>See you soon! ❤️</h1>
+        <p id="reminder"></p>
+        <p id="selectedFood"></p>
+        <p id="selectedMovie"></p>
+        <p id="excitementLevel"></p>
+    </div>
+
+    <script>
+        // Retrieve and display data
+        const selectedFood = JSON.parse(localStorage.getItem('selectedFood'));
+        const selectedMovie = JSON.parse(localStorage.getItem('selectedMovie'));
+        const excitementLevel = localStorage.getItem('excitementLevel');
+
+        // Update the DOM with the retrieved data
+        document.getElementById('reminder').innerText = "Don't forget on 2024-10-17 at 05:00"; // Hardcoded date and time
+
+        if (selectedFood) {
+            document.getElementById('selectedFood').innerText = "You chose: " + selectedFood.join(", ");
+        }
+        if (selectedMovie) {
+            document.getElementById('selectedMovie').innerText = "Movies you want to watch: " + selectedMovie.join(", ");
+        }
+        if (excitementLevel) {
+            document.getElementById('excitementLevel').innerText = "Your excitement level: " + excitementLevel + "%";
+        }
+    </script>
+
+</body>
+</html>
