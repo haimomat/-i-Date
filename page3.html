@@ -134,18 +134,28 @@
         }
 
         function goToNextPage() {
-            const selectedItems = document.querySelectorAll('.selected p'); // Get selected food items
-            if (selectedItems.length > 0) {
-                let foodSelection = [];
-                selectedItems.forEach(item => {
-                    foodSelection.push(item.innerText); // Store the selected food names
-                });
-                localStorage.setItem('selectedFood', JSON.stringify(foodSelection)); // Store in local storage
-                window.location.href = "page4.html"; // Go to the movie selection page
-            } else {
-                alert("Please select at least one food.");
-            }
-        }
+    const selectedItems = document.querySelectorAll('.selected p'); // Get selected food items
+    if (selectedItems.length > 0) {
+        let foodSelection = [];
+        selectedItems.forEach(item => {
+            foodSelection.push(item.innerText); // Store the selected food names
+        });
+
+        // Lấy lại ngày và giờ từ URL (nếu có)
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedDate = urlParams.get('date');
+        const selectedTime = urlParams.get('time');
+        
+        // Tạo URL với các món ăn đã chọn và ngày giờ
+        const nextPage = `page4.html?date=${encodeURIComponent(selectedDate)}&time=${encodeURIComponent(selectedTime)}&food=${encodeURIComponent(foodSelection.join(', '))}`;
+        
+        // Điều hướng tới trang tiếp theo với thông tin món ăn đã chọn
+        window.location.href = nextPage;
+    } else {
+        alert("Please select at least one food.");
+    }
+}
+
     </script>
 
 </body>

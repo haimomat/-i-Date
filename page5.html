@@ -151,10 +151,22 @@
 
         // Function to go to the next page
         function nextPage() {
-            const sliderValue = document.getElementById('excitementSlider').value; // Get slider value
-            localStorage.setItem('excitementLevel', sliderValue); // Store in local storage
-            window.location.href = "page6.html"; // Go to the final page
-        }
+    const sliderValue = document.getElementById('excitementSlider').value; // Get slider value
+
+    // Lấy lại ngày, giờ, món ăn, và phim từ URL (nếu có)
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedDate = urlParams.get('date');
+    const selectedTime = urlParams.get('time');
+    const selectedFood = urlParams.get('food');
+    const selectedMovie = urlParams.get('movie');
+
+    // Tạo URL với thông tin mức độ hào hứng và các thông tin trước đó
+    const nextPage = `page6.html?date=${encodeURIComponent(selectedDate)}&time=${encodeURIComponent(selectedTime)}&food=${encodeURIComponent(selectedFood)}&movie=${encodeURIComponent(selectedMovie)}&excitement=${encodeURIComponent(sliderValue)}`;
+    
+    // Điều hướng tới trang cuối cùng (page6.html)
+    window.location.href = nextPage;
+}
+
     </script>
 
 </body>

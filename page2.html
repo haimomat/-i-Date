@@ -89,17 +89,21 @@
     </div>
 
     <script>
-        function submitDate() {
-            const date = document.getElementById("date").value;
-            const time = document.getElementById("time").value;
-            
-            if (date && time) {
-                // Redirect to the food selection page after selecting the date and time
-                window.location.href = "page3.html"; // Update with your next page file name
-            } else {
-                alert("Please select both a date and time.");
-            }
-        }
+       function submitDate() {
+    const date = document.getElementById("date").value;
+    const time = document.getElementById("time").value;
+    
+    if (date && time) {
+        // Tạo URL với các thông tin ngày và giờ
+        const nextPage = `page3.html?date=${encodeURIComponent(date)}&time=${encodeURIComponent(time)}`;
+        
+        // Chuyển hướng tới trang chọn món ăn với thông tin ngày và giờ trong URL
+        window.location.href = "page3.html";
+    } else {
+        alert("Please select both a date and time.");
+    }
+}
+
     </script>
 
 </body>

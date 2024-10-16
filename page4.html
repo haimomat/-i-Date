@@ -134,18 +134,28 @@
         }
 
         function goToNextPage() {
-            const selectedItems = document.querySelectorAll('.selected p'); // Get selected movie items
-            if (selectedItems.length > 0) {
-                let movieSelection = [];
-                selectedItems.forEach(item => {
-                    movieSelection.push(item.innerText); // Store the selected movie names
-                });
-                localStorage.setItem('selectedMovie', JSON.stringify(movieSelection)); // Store in local storage
-                window.location.href = "page5.html"; // Go to the excitement rating page
-            } else {
-                alert("Please select at least one movie.");
-            }
-        }
+    const selectedItems = document.querySelectorAll('.selected p'); // Get selected movie items
+    if (selectedItems.length > 0) {
+        let movieSelection = [];
+        selectedItems.forEach(item => {
+            movieSelection.push(item.innerText); // Store the selected movie names
+        });
+
+        // Lấy lại ngày, giờ và món ăn từ URL (nếu có)
+        const urlParams = new URLSearchParams(window.location.search);
+        const selectedDate = urlParams.get('date');
+        const selectedTime = urlParams.get('time');
+        const selectedFood = urlParams.get('food');
+        
+        // Tạo URL với thông tin phim đã chọn và các thông tin trước đó
+        const nextPage = `page5.html?date=${encodeURIComponent(selectedDate)}&time=${encodeURIComponent(selectedTime)}&food=${encodeURIComponent(selectedFood)}&movie=${encodeURIComponent(movieSelection.join(', '))}`;
+        
+        // Điều hướng tới trang tiếp theo
+        window.location.href = nextPage;
+    } else {
+        alert("Please select at least one movie.");
+    }
+}
     </script>
 
 </body>
